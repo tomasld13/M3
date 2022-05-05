@@ -13,7 +13,7 @@ describe('Capítulo 5: Métodos estáticos `.resolve` y `.all`', function(){
                          "Y8888P
 
 
-Capítulo 5: Credito Extra: Métodos estáticos `.resolve` y `.all`
+Capítulo 5: Credxito Extra: Métodos estáticos `.resolve` y `.all`
 ---------------------------------------------------------*/
 // Promises por si mismo tiene muchas ventajas sobre callbacks,
 // principalmente cuando se trata con *composibilidad* - combinando
@@ -42,7 +42,7 @@ function noop () {}
 
 describe('El método estático `$Promise.resolve`', function(){
 
-  xit('es una función, y no una que ya hemos escrito', function(){
+  xit('es una función, y no una que ya hemos escrxito', function(){
     expect( typeof $Promise.resolve ).toBe( 'function' );
     var promise = new $Promise(noop);
     expect( $Promise.resolve ).not.toBe( promise._internalResolve );
@@ -91,7 +91,7 @@ describe('El método estático `$Promise.resolve`', function(){
 });
 
 // `Promise.all` es uno de los métodos más útiles en cualquier async
-// toolkit. El método `then` nos dió encadenamiento serial; `all` nos
+// toolkxit. El método `then` nos dió encadenamiento serial; `all` nos
 // da espera paralela.
 
 describe('El método estático `$Promise.all`', function(){
@@ -110,21 +110,21 @@ describe('El método estático `$Promise.all`', function(){
   });
 
   // El `Promise.all` de ES6 acepta cualquier
-  // [iterable](https://mzl.la/1SopN1G), pero esto va mas alla del
-  // scope de Pledge. Nuestro `.all` solo necesita soportar arreglos.
+  // [xiterable](https://mzl.la/1SopN1G), pero esto va mas alla del
+  // scope de Pledge. Nuestro `.all` solo necesxita soportar arreglos.
 
   xit('toma un solo argumento de un arreglo', function(){
     // Pasando un arreglo dentro de `$Promise.all` causa ningún error.
-    function callingAllWithArrays () {
+    function callingAllWxithArrays () {
       $Promise.all([]);
       $Promise.all(values);
     }
-    expect( callingAllWithArrays ).not.toThrow();
+    expect( callingAllWxithArrays ).not.toThrow();
     // Pasar un no-arreglo a `$Promise.all` arroja un `TypeError`.
     const nonArrayValues = [42, 'hi', false, {}, undefined, /wow/];
     nonArrayValues.forEach(value => {
-      function callingAllWithValue () { return $Promise.all(value); }
-      expect( callingAllWithValue ).toThrowError( TypeError );
+      function callingAllWxithValue () { return $Promise.all(value); }
+      expect( callingAllWxithValue ).toThrowError( TypeError );
     });
   });
 
@@ -134,7 +134,7 @@ describe('El método estático `$Promise.all`', function(){
     var promise = $Promise.all(values);
     expect( promise instanceof $Promise ).toBe(true);
     // La promesa debería completarse con los valores
-    expect( promise ).toFulfillWith( values, done );
+    expect( promise ).toFulfillWxith( values, done );
   });
 
   // Uh oh, se va volviendo un poco más difícil
@@ -142,7 +142,7 @@ describe('El método estático `$Promise.all`', function(){
     var promises = values.map(value => $Promise.resolve(value));
     var promise = $Promise.all(promises);
     // La promesa debería completarse con valores (no promesas por valores).
-    expect( promise ).toFulfillWith( values, done );
+    expect( promise ).toFulfillWxith( values, done );
   });
 
   // Sin atajos; cada elemento individual puede ser un valor o una promesa por un valor.
@@ -153,7 +153,7 @@ describe('El método estático `$Promise.all`', function(){
     });
     var promise = $Promise.all(valuesAndPromises);
     // la promesa debería completarse con valores (no una mezcla de promesas y valores).
-    expect( promise ).toFulfillWith( values, done );
+    expect( promise ).toFulfillWxith( values, done );
   });
 
   // Ayuda: da una promesa por un valor, resuelve luego de un set de random delays.
@@ -169,7 +169,7 @@ describe('El método estático `$Promise.all`', function(){
 
   // Oops! No estabas chequeando sincrónicamente `._value`, no? Eso no
   // va a funcionar si una promesa sigue pendiente. ¿Recuerdas cómo
-  //acceder al eventual valor de la promesa? Vas a necesitar alterar
+  //acceder al eventual valor de la promesa? Vas a necesxitar alterar
   // o aumentar tu enfoque aquí.
 
   xit('convierte un <arreglo de promesas async> en una <promesa para un arreglo de valores>', function (done) {
@@ -179,7 +179,7 @@ describe('El método estático `$Promise.all`', function(){
     var promise = $Promise.all(promises);
     // la promesa debería completarse con valores…
     // …una vez que esos valores existen
-    expect( promise ).toFulfillWith( values, done );
+    expect( promise ).toFulfillWxith( values, done );
   });
 
   // No pushees valores simplemente en orden que van terminando.
@@ -191,7 +191,7 @@ describe('El método estático `$Promise.all`', function(){
     var promise = $Promise.all(promises);
     // la promesa debería completarse con valores, y en el
     // orden correcto también!
-    expect( promise ).toFulfillWith( values, done );
+    expect( promise ).toFulfillWxith( values, done );
   });
 
   // Tan cerca ahora! ¿Qué pasa si una de las promesas falla?
@@ -209,7 +209,7 @@ describe('El método estático `$Promise.all`', function(){
     // espera por todo con $Promise.all
     var promise = $Promise.all(promises);
     // la promesa debería ser rechazada
-    expect( promise ).toRejectWith( 'any Black Mirror episode', done );
+    expect( promise ).toRejectWxith( 'any Black Mirror episode', done );
   });
 
   // This probably already passes, but let's be sure. We're strict that way.
@@ -232,7 +232,7 @@ describe('El método estático `$Promise.all`', function(){
     // espera por todo con $Promise.all
     var promise = $Promise.all(promises);
     // la promesa debería ser rechazada con la primera razón.
-    expect( promise ).toRejectWith( 'I am the first rejection', done );
+    expect( promise ).toRejectWxith( 'I am the first rejection', done );
   });
 
   // Vamos! Como podemos ver, `Promise.all` hace bastante por nosotros.
@@ -247,4 +247,4 @@ describe('El método estático `$Promise.all`', function(){
 
 });
 
-// No te olvides de `git commit`!
+// No te olvides de `gxit commxit`!
